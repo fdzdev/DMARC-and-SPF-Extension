@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DMARC & SPF Checker - Privacy & Permissions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1,
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .permission {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .permission h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .justification {
+            margin-left: 20px;
+        }
+
+        .purpose {
+            background: #eafaf1;
+            border-left: 4px solid #2ecc71;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .data-policy {
+            background: #fef9e7;
+            border-left: 4px solid #f1c40f;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>DMARC & SPF Checker - Privacy & Permissions</h1>
+
+    <div class="section">
+        <h2>Permissions Required</h2>
+
+        <div class="permission">
+            <h3>activeTab Permission</h3>
+            <div class="justification">
+                Required to identify the active tab and its associated domain. This enables the extension to fetch DMARC
+                and SPF records for the website you're currently visiting. Without this permission, the extension cannot
+                analyze or provide insights for the current domain.
+            </div>
+        </div>
+
+        <div class="permission">
+            <h3>dns Permission</h3>
+            <div class="justification">
+                Allows the extension to query DNS records directly to retrieve DMARC and SPF details. This permission is
+                essential for providing accurate and real-time DNS analysis of email authentication configurations.
+            </div>
+        </div>
+
+        <div class="permission">
+            <h3>Host Permission (https://dns.google/*)</h3>
+            <div class="justification">
+                The extension uses Google's DNS service to fetch DMARC and SPF records securely and reliably. This
+                permission ensures communication with this trusted endpoint for accurate data retrieval.
+            </div>
+        </div>
+
+        <div class="permission">
+            <h3>storage Permission</h3>
+            <div class="justification">
+                Used to store the history of analyzed domains and their DMARC/SPF records locally on your device. This
+                enhances user experience by allowing you to revisit past results without re-querying DNS.
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Single Purpose Description</h2>
+        <div class="purpose">
+            This extension serves one specific purpose: to analyze DMARC and SPF policies for any website. By querying
+            DNS records, it provides real-time insights into email authentication configurations, helping users detect
+            misconfigurations or security issues efficiently.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Data Usage & Privacy</h2>
+        <div class="data-policy">
+            <h3>Data Collection & Processing</h3>
+            <ul>
+                <li>All domain analysis is performed through Google's public DNS API</li>
+                <li>DNS query results are stored locally on your device only</li>
+                <li>No personal data is collected or transmitted to third parties</li>
+                <li>History data can be cleared at any time through the extension interface</li>
+            </ul>
+
+            <h3>Remote Code Usage</h3>
+            <p>The extension only makes API calls to Google's DNS server (dns.google) to fetch DNS records. No external
+                or untrusted code execution occurs.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Contact Information</h2>
+        <p>For questions, concerns, or support regarding this extension, please contact:</p>
+        <p>[Your Contact Email]</p>
+    </div>
+</body>
+
+</html>
