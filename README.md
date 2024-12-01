@@ -103,3 +103,20 @@ function fetchDNSRecords(domain) {
     .then(data => parseRecords(data));
 }
 ```
+## Storage Management
+
+Manages results using Chrome's `storage` API:
+
+- **Save Results:** Records current domain data.
+- **Load History:** Retrieves past analyses for the "History" tab.
+- **Clear History:** Provides an option to delete stored data.
+
+### Example Storage Function
+```javascript
+function saveResult(domain, records) {
+  chrome.storage.local.get("history", (data) => {
+    const history = data.history || [];
+    history.push({ domain, records });
+    chrome.storage.local.set({ history });
+  });
+}
