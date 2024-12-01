@@ -85,3 +85,21 @@ function fetchAndRenderResults(domain) {
     }
   });
 }
+```
+
+## Background Script (`background.js`)
+
+Handles DNS queries and backend logic:
+
+- **Google DNS API:** Fetches DMARC/SPF `TXT` records for the domain.
+- **Message Listener:** Processes requests from the popup script.
+- **Error Notifications:** Alerts users to missing or malformed DNS records.
+
+### Example DNS Query
+```javascript
+function fetchDNSRecords(domain) {
+  fetch(`https://dns.google/resolve?name=${domain}&type=TXT`)
+    .then(response => response.json())
+    .then(data => parseRecords(data));
+}
+```
