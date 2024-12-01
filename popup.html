@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DMARC and SPF Checker</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 16px;
+            width: 380px;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin: 0 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+            color: #2c3e50;
+        }
+
+        .record-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        .domain-name {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-bottom: 16px;
+            word-break: break-all;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-success {
+            background-color: #2ecc71;
+        }
+
+        .status-error {
+            background-color: #e74c3c;
+        }
+
+        .record-label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .record-value {
+            background: white;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+            font-family: monospace;
+            font-size: 12px;
+            word-break: break-all;
+            margin-top: 4px;
+        }
+
+        .loading {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tab {
+            padding: 8px 16px;
+            cursor: pointer;
+            color: #666;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab.active {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .history-item {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+
+        .history-item:hover {
+            background: #f8f9fa;
+        }
+
+        .history-date {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .clear-history {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 16px;
+        }
+
+        .clear-history:hover {
+            background: #c0392b;
+        }
+
+        .no-history {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+        }
+
+        .record-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #ccc;
+        }
+
+        .record-container.success {
+            border-left-color: #2ecc71;
+            background: #eafaf1;
+        }
+
+        .record-container.warning {
+            border-left-color: #f1c40f;
+            background: #fef9e7;
+        }
+
+        .record-container.error {
+            border-left-color: #e74c3c;
+            background: #fdeaea;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .success .status-indicator {
+            background-color: #2ecc71;
+        }
+
+        .warning .status-indicator {
+            background-color: #f1c40f;
+        }
+
+        .error .status-indicator {
+            background-color: #e74c3c;
+        }
+
+        .record-details {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .error .record-details {
+            color: #c0392b;
+        }
+
+        .warning .record-details {
+            color: #c7a40c;
+        }
+
+        .success .record-details {
+            color: #27ae60;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <h1>DMARC & SPF Checker</h1>
+
+    <div class="tabs">
+        <div class="tab active" data-tab="current">Current</div>
+        <div class="tab" data-tab="history">History</div>
+    </div>
+
+    <div id="current-tab" class="tab-content active">
+        <div id="results">
+            <div class="loading">Loading records...</div>
+        </div>
+    </div>
+
+    <div id="history-tab" class="tab-content">
+        <div id="history-results"></div>
+        <button class="clear-history">Clear History</button>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>
