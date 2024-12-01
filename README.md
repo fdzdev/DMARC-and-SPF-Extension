@@ -30,9 +30,22 @@ The manifest defines the extension's permissions, actions, and background tasks.
 
 Key snippet:
 ```json
-"background": {
+{
+  "manifest_version": 3,
+  "name": "DMARC and SPF Checker",
+  "version": "1.0",
+  "permissions": ["activeTab", "dns", "storage"],
+  "host_permissions": ["https://dns.google/*"],
+  "background": {
     "service_worker": "background.js"
-},
-"permissions": ["activeTab", "dns", "storage"],
-"host_permissions": ["https://dns.google/*"]
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  }
+}
 ```
