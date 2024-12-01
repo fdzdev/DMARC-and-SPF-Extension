@@ -120,3 +120,19 @@ function saveResult(domain, records) {
     chrome.storage.local.set({ history });
   });
 }
+```
+## Usage
+
+1. **Install:** Add the extension to Chrome. It soon will be on the Google Chrome Extension Store.
+2. **Analyze Records:** Open the extension to view DMARC/SPF data for the current tab.
+3. **Check History:** Navigate to the "History" tab for past analyses.
+4. **Clear History:** Use the "Clear History" button to delete old data.
+
+---
+
+## Contribution
+
+Contributions are welcome! Feel free to open issues or submit pull requests on GitHub.
+
+**Feedback and improvements are always appreciated.**
+
