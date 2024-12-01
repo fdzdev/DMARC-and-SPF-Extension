@@ -49,3 +49,39 @@ Key snippet:
   }
 }
 ```
+## Popup Interface
+
+### Design (`popup.html`)
+
+The popup UI is styled for clarity and usability. It includes:
+
+- **Current Tab Records:** Displays DMARC and SPF data for the active tab.
+- **History Tab:** Lists previously analyzed domains.
+
+#### Features
+
+- **Tabs:** Switch between "Current" and "History."
+- **Styled Alerts:** Status indicators (success, warning, error).
+- **Dynamic Content:** A loading spinner during DNS queries.
+
+---
+
+### Interactivity (`popup.js`)
+
+Handles:
+
+- **Communication with `background.js`:** Sends requests to retrieve DNS queries.
+- **Dynamic Rendering:** Updates the UI with fetched results.
+- **History Management:** Supports saving, retrieving, and clearing history.
+
+#### Example Function:
+```javascript
+function fetchAndRenderResults(domain) {
+  chrome.runtime.sendMessage({ action: "fetchDNS", domain }, (response) => {
+    if (response.error) {
+      displayError(response.error);
+    } else {
+      displayResults(response.records);
+    }
+  });
+}
